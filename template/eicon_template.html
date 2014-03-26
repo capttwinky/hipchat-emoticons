@@ -1,0 +1,19 @@
+<head>
+<title>emoticons for hipchat at tinyco</title>
+</head>
+<body>
+<table border=1>
+    <tr>
+        <th>shortcut</th>
+        <th>image</th>
+        <th>image location</th>
+    </tr>
+    {% for eico in eicons %}
+    <tr>
+        <td>({{eico.shortcut}})</td>
+        <td><img src='{{eico.url}}' /></td>
+        <td><a href='{{eico.url}}'>{{eico.url}}</a></td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
