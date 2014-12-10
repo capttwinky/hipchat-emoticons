@@ -13,11 +13,10 @@ class HipChatter(object):
     def load_emoticons(self):
         while True:
             eicons = self.hc_if.emoticons()
-            self.emoticons.extend(eicons['items'])
-            if eicons['links'].get('next'):
-                self.hc_if.emoticons.url = eicons['links'].get('next')
-            else:
+            if not eicons['items']:
                 break
+            self.emoticons.extend(eicons['items'])
+            self.hc_if.emoticons.url = eicons['links'].get('next')
 
 def download_files(recs):
     '''downloads the files assoicated with a list of emoticon records'''
@@ -37,8 +36,10 @@ def render_tpl(recs):
         ofile.write(mtpl.render({'eicons':recs}))
 
 def main():
+    import ipdb; ipdb.set_trace()
     my_hc = HipChatter()
     my_hc.load_emoticons()
+    
     render_tpl([dict(e) for e in my_hc.emoticons])
 
 if __name__ == '__main__':
