@@ -7,12 +7,14 @@
         <th>shortcut</th>
         <th>image</th>
         <th>image location</th>
+        <th>creator</th>
     </tr>
     {% for eico in eicons %}
     <tr>
         <td>({{eico.shortcut}})</td>
         <td><img src='{{eico.url}}' /></td>
         <td><a href='{{eico.url}}'>{{eico.url}}</a></td>
+        <td>{{eico.creator.name}}{% if eico.creator.mention_name %}: @{{eico.creator.mention_name}} {%endif%}</td>
     </tr>
     {% endfor %}
 </table>
